@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Mon Application Vue.js</title>
+
+</head>
+<style>
+    .red {
+        color: red;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1>Ma première application Vue.js !</h1>
+        <h1>{{ message }}</h1>
+        <!--dans la div : afficher nos données dans notre application web{{nomDeLadonnée}}-->
+        <p>J'ai hâte de créer des applications incroyables !</p>
+    </div>
+
+    <div id="app2">
+        <input type="text" v-model="nom" />
+        <h1 :class="{ red: changeclassRed }">{{ nom }}</h1>
+
+        <input type="text" v-model="prenom" />
+        <h2 :class="{ red: changeclassRed }">{{ prenom }}</h2>
+        <button @click="displayPrenom = prenom">Valider</button>
+        <h2>{{ displayPrenom }}</h2>
+
+
+        <input type="checkbox" @click="changeclassRed = !changeclassRed">
+        change la couleur
+        <br></br>
+        <input type="checkbox" @click="checked = !checked">
+        cache l'image
+        <img src="https://cdn.pixabay.com/photo/2021/02/08/16/03/dinosaur-5995333_960_720.png" v-if="checked">
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!--lien CDN-->
+    <script>
+        //declarer une constante app - on lui assigne une nouvelle instance de vue
+        const app = new Vue({
+            //declarer où va s'attacher l'application vue
+            el: '#app',
+            //ecrit un message qu'on peut reutiliser  
+            data: {
+                message: 'Bonjour'
+            }
+        })
+
+        new Vue({
+            el: '#app2',
+            data: {
+                nom: 'nawal',
+                prenom: 'beitia',
+                displayPrenom: '',
+                checked: false,
+                changeclassRed: false,
+
+
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
